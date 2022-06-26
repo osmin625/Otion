@@ -56,7 +56,7 @@ module.exports = async (req, res) => {
     },
     (error, page_text) => {
       console.log(error);
-      res.redirect("/analysis");
+      res.redirect("/analysis/");
     }
   );
 
