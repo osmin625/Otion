@@ -18,7 +18,7 @@ const PageSchima = new Schema({
 })
 const app = new express();
 
-mongoose.connect('mongodb://cluster0.mkmcxir.mongodb.net/Otion', {useNewUrlParser:true})
+mongoose.connect('mongodb+srv://osmin625:osmin625@cluster0.mkmcxir.mongodb.net/test', {useNewUrlParser:true})
 
 app.set('view engine','ejs'); //view engine 으로 ejs 설정해주기
 app.use(express.static("assets")); //고정 폴더 asset 추가해주기
