@@ -28,7 +28,7 @@ app.use(express_session({
     resave: false,
     saveUninitialized: true,
 }))
-app.listen(4040); //port 설정
+app.listen(process.env.PORT); //port 설정
 
 app.get('/', main_controller.render)
 app.get('/main', main_controller.render)
