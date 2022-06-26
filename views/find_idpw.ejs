@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Otion</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="jquery-3.6.0.js"></script>
+    <style>
+      #content {
+        background-color: #fffefb;
+        display: flex;
+        flex-direction: column;
+      }
+      #headline {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+      #bodyline {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .head_content {
+        padding: 5px 15px;
+      }
+      .head_content:hover {
+        background-color: #f7f6f3;
+        text-decoration: underline;
+      }
+      body {
+        margin: 0px;
+      }
+
+      #OTION {
+        font-size: 40px;
+        margin-bottom: 30px;
+        text-align: center;
+        font-family: "inter";
+        font-weight: lighter;
+      }
+      a {
+        text-decoration: none;
+        color: black;
+      }
+      #main {
+        display: flex;
+        padding: 10px 30px 10px 80px;
+        align-items: center;
+      }
+      #icon {
+        max-width: 50px;
+      }
+      #icon_name {
+        font-weight: bold;
+      }
+
+      .link:hover {
+        text-decoration: underline;
+      }
+      #wrapper {
+        display: flex;
+        align-content: space-between;
+        justify-content: space-between;
+        min-height: 100vh;
+      }
+      #content {
+        width: 100%;
+      }
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        min-width: 400px;
+        margin: 10px;
+        font-size: 18px;
+        background-color: white;
+        border: solid 1px rgb(225, 225, 225);
+        border-radius: 5px;
+      }
+      input[type="email"] {
+        padding: 10px 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background-color: #f7f6f3;
+        border: solid 1px rgb(225, 225, 225);
+        border-radius: 5px;
+        min-width: 355px;
+        font-size: 20px;
+      }
+      input[type="email"]:hover {
+        border: solid 1px rgb(201, 201, 201);;
+      }
+      input[type="email"]:focus {
+        outline: solid 3px #abdcef;
+        border: solid 1px #00a2e3;
+      }
+      input[type="email"]:active {
+        outline: none;
+        border: solid 1px #00a2e3;
+      }
+      #email_text {
+        color: #bbbbbb;
+        font-size: 13px;
+      }
+      #email_text:hover {
+        color: #898989;
+      }
+      #email {
+        color: #ec625b;
+        background-color: #fdf5f2;
+        border: solid 1px #ec625b;
+      }
+      #email:hover{
+        background-color: #feece5;
+      }
+      #email:active{
+          background-color: #fee3d9;
+      }
+      #title {
+        font-size: 35px;
+        padding: 20px;
+        font-weight: bold;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .bold {
+        font-weight: bold;
+      }
+      hr {
+        width: 400px;
+        color: #bbbbbb;
+      }
+      img {
+        width: 30px;
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="content">
+        <div id="headline">
+          <a id="main" href="main.html">
+            <img id="icon" src="otion.png" />
+            <span id="icon_name" class="center">Otion</span>
+          </a>
+        </div>
+        <div id="bodyline">
+          <div id="title">
+            아이디 / 비밀번호 찾기
+            <input type="email" placeholder="이메일 주소를 입력하세요" />
+            <button id="email">이메일 보내기</button>
+            <div id="email_text">
+                이메일 주소로 가입된 계정이 있는지 확인하고, 있다면 해당 이메일로
+                비밀번호를 보내드립니다.
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

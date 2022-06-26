@@ -1,0 +1,170 @@
+<script>
+    $(document).ready(function () {
+      $("#open").click(function () {
+        $("#sidebar").animate({ width: "toggle" }, 100);
+        $(this).hide();
+      });
+      $("#close").click(function () {
+        $("#sidebar").animate({ width: "toggle" }, 100);
+        $("#open").show();
+      });
+      $("#page_add").click(function () {
+        $("#link").toggle();
+        $("#link_submit").toggle();
+        if ($(this).text() != "취소") {
+          $(this).text("취소")
+        }
+        else {
+          $(this).text("╋ 새 페이지")
+        }
+      });
+      $("#page_add").click(function () {
+
+      });
+    });
+  </script>
+<style>
+    #open {
+      margin-left: auto;
+      margin-right: 10px;
+      background-color: transparent;
+      color: #b6b4b0;
+      font-weight: bold;
+      font-size: 25px;
+      padding: 5px 10px 5px 10px;
+      border: 0px;
+      border-radius: 5px;
+      display: none;
+    }
+
+    #open:hover {
+      background-color: #e2e2e2;
+      color: #908e8b;
+    }
+
+    #close {
+      background-color: transparent;
+      color: #bbbbbb;
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+      font-weight: lighter;
+      font-size: 25px;
+      padding: 5px 5px 5px 5px;
+      margin: 13px 15px;
+      border: 0px;
+      border-radius: 5px;
+      max-width: 40px;
+      visibility: hidden;
+    }
+
+    #close:hover {
+      background-color: #e8e7e4;
+      color: #908e8b;
+    }
+    .page_opener {
+      font-family: initial;
+      padding: 7px 30px 7px 30px;
+      background-color: transparent;
+      font-weight: bold;
+      white-space: nowrap;
+      font-size: 17px;
+      color: #a4a19e;
+      width: 100%;
+      border: none;
+      text-align: left;
+    }
+
+    .page_opener:hover {
+      background-color: #e8e7e4;
+      cursor: pointer;
+    }
+
+    .page_opener:active {
+      background-color: #d6d5d2;
+    }
+
+    .page_opener:focus, .current_page {
+      background-color: #e8e7e4;
+      color: #787675;
+      box-shadow: inset 1px 1px 1px 1px rgba(0,0,0,0.1) ;
+
+    }
+
+    #sidebar {
+      display: flex;
+      width: 18%;
+      min-width: fit-content;
+      overflow: auto;
+      align-content: flex-start;
+      align-items: flex-start;
+      background-color: #f7f6f3;
+      flex-direction: column;
+    }
+
+    #sidebar:hover #close {
+      visibility: visible;
+    }
+    #page_add {
+      position: fixed;
+      background-color: transparent;
+      border: none;
+      border-top: 1px solid #e8e7e4;
+      font-size: 18px;
+      padding: 15px;
+      top: auto;
+      bottom: 0px;
+      margin-top: auto;
+      color: #b6b4b0;
+      width: 100%;
+      text-align: left;
+    }
+
+    #page_add:hover {
+      background-color: #e8e7e4;
+    }
+    #link {
+      position: fixed;
+      border: none;
+      border-top: 1px solid #e8e7e4;
+      font-size: 18px;
+      padding: 15px;
+      top: auto;
+      bottom: 0px;
+      margin-top: auto;
+      margin-bottom: 112px;
+      color: #b6b4b0;
+      width: 100%;
+      text-align: left;
+      display: none;
+    }
+    #link_submit {
+      position: fixed;
+      /* background-color: transparent; */
+      border: none;
+      border-top: 1px solid #e8e7e4;
+      font-size: 18px;
+      padding: 15px;
+      top: auto;
+      bottom: 0px;
+      margin-top: auto;
+      margin-bottom: 56px;
+      color: #b6b4b0;
+      width: 100%;
+      text-align: left;
+      display: none;
+    }
+</style>
+<div id="sidebar">
+    <button id="close">≫</button>
+    <% if(locals.pages) %>
+      <% for(var page of locals.pages){ %>
+        <button class="page_opener <% if(''+page._id === ''+locals.page_id){ %> current_page <% } %>" onclick="location.href='./<%= page._id %>'">
+          <%= page.title %>
+        </button>
+        <% } %>
+          <form action="/page/save" method="GET">
+            <input type="text" id="link" name="notion_link" placeholder="노션 페이지 링크를 입력하세요.">
+            <input type="submit" id="link_submit" value="생성하기">
+          </form>
+          <button id="page_add">╋ &nbsp 새 페이지</button>
+  </div>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Otion</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="./jquery-3.6.0.js"></script>
+  <% if( req.session.user_id) { %>
+    <script>
+      $(document).ready(() => {
+        $("#sidebar").hide();
+        $("#open").show();
+      }
+      )
+    </script>
+    <% } %>
+      <script>
+        $(document).ready(function () {
+          $("#open").click(function () {
+            $("#sidebar").animate({ width: "toggle" }, 1);
+            $(this).hide();
+          });
+          $("#close").click(function () {
+            $("#sidebar").animate({ width: "toggle" }, 1);
+            $("#open").show();
+          });
+          $("#start").click(function () {
+            $("#sidebar").animate({ width: "30%", padding: "40px" }, 600);
+            $(this).hide();
+          });
+        });
+      </script>
+      <style>
+        #content {
+          background-color: #fffefb;
+        }
+
+        #headline {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+        }
+
+        .head_content {
+          padding: 5px 15px;
+        }
+
+        .head_content:hover {
+          background-color: #f7f6f3;
+          text-decoration: underline;
+        }
+
+        .head_content:active {
+          background-color: #f0ece3;
+          text-decoration: underline;
+        }
+
+        #open {
+          margin-left: auto;
+          margin-right: 10px;
+          background-color: transparent;
+          color: #b6b4b0;
+          font-weight: bold;
+          font-size: 25px;
+          padding: 5px 10px 5px 10px;
+          border: 0px;
+          border-radius: 5px;
+          display: none;
+        }
+
+        #open:hover {
+          background-color: #e2e2e2;
+          color: #908e8b;
+        }
+
+        #close {
+          background-color: transparent;
+          color: #bbbbbb;
+          font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+            sans-serif;
+          font-weight: lighter;
+          font-size: 25px;
+          padding: 5px 5px 5px 5px;
+          margin: 13px 15px;
+          border: 0px;
+          border-radius: 5px;
+          max-width: 40px;
+        }
+
+        #close:hover {
+          background-color: #e8e7e4;
+          color: #908e8b;
+        }
+
+        #start {
+          margin-left: auto;
+          margin-right: 30px;
+          background-color: #E16259;
+          color: white;
+          padding: 8px 15px 8px 15px;
+          border: 0px;
+          border-radius: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+          padding: 1em;
+          margin: 3px 0px;
+          border-radius: 8px;
+          border: solid 1px #bbbbbb;
+        }
+
+        input[type="text"]:hover,
+        input[type="password"]:hover {
+          border: solid 1px rgb(97, 97, 97);
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+          outline: solid 2px #abdcef;
+          border: solid 1px #bbbbbb;
+        }
+
+        body {
+          margin: 0px;
+          height: 100vh;
+        }
+
+        #main_pic1 {
+          max-width: 120px;
+          max-height: 120px;
+          padding: 40px;
+        }
+
+        #main_pic2 {
+          max-width: 130px;
+          max-height: 130px;
+          padding: 42px 25px;
+        }
+
+        #main_pic3 {
+          max-width: 130px;
+          max-height: 130px;
+          padding: 40px;
+        }
+
+        input[type="submit"] {
+          padding: 0.5em;
+          border-radius: 8px;
+          border: solid 1px #bbbbbb;
+          margin-top: 24px;
+          margin-bottom: 15px;
+          background-color: #9b9a97;
+          color: white;
+          font-size: 20px;
+          box-shadow: 2px 2px 2px 1px #bbbbbb;
+        }
+
+        input[type="submit"]:hover {
+          background-color: #878785;
+        }
+
+        input[type="submit"]:active {
+          background-color: #7f7f7f;
+        }
+
+        #OTION {
+          font-size: 40px;
+          margin-bottom: 30px;
+          text-align: center;
+          font-family: "inter";
+          font-weight: lighter;
+        }
+
+        a {
+          text-decoration: none;
+          color: black;
+        }
+
+        #main {
+          display: flex;
+          padding: 10px 30px 10px 80px;
+          align-items: center;
+        }
+
+        #icon {
+          max-width: 50px;
+        }
+
+        #icon_name {
+          font-weight: bold;
+        }
+
+        #login_option {
+          display: flex;
+          justify-content: space-between;
+          font-size: 13px;
+          font-weight: bold;
+        }
+
+        .link:hover {
+          text-decoration: underline;
+        }
+
+        #circle {
+          margin: 40px 50px 50px 150px;
+          width: 200px;
+          height: 200px;
+          border-radius: 100px;
+          min-width: 200px;
+          border: solid 1px rgb(135, 135, 135);
+          background-color: white;
+          display: inline-block;
+        }
+
+        #sections {
+          display: flex;
+          align-items: center;
+          font-size: 25px;
+          max-width: 99%;
+        }
+
+        #sections:hover {
+          background-color: #fcf9f2;
+        }
+
+        #wrapper {
+          display: flex;
+          align-content: space-between;
+          justify-content: space-between;
+          min-height: 100vh;
+        }
+
+        #content {
+          width: 100%;
+        }
+
+        form {
+          display: flex;
+          flex-direction: column;
+        }
+
+        #userinfo {
+          margin-left: 20px;
+          color: #878785;
+          font-size:20px;
+          width: 200px;
+          line-break: anywhere;
+        }
+      </style>
+      <% if( !req.session.user_id) { %>
+        <style>
+          #sidebar {
+            display: flex;
+            box-sizing: border-box;
+            width: 0%;
+            overflow: hidden;
+            background-color: #f7f6f3;
+            align-content: center;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0px;
+          }
+        </style>
+        <% }else{ %>
+          <style>
+            #sidebar {
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-start;
+              align-content: flex-start;
+              align-items: flex-start;
+
+              width: 18%;
+              min-width: fit-content;
+
+              overflow: auto;
+
+              background-color: #f7f6f3;
+            }
+
+            #logout {
+              margin: 20px;
+              background-color: transparent;
+              border: solid 1px #bbbbbb;
+              border-top: 1px solid #e8e7e4;
+              font-size: 18px;
+              padding: 5px 15px;
+              color: #b6b4b0;
+              text-align: left;
+              border-radius: 10px;
+            }
+
+            #logout:hover {
+              background-color: #e8e7e4;
+            }
+          </style>
+          <% } %>
+</head>
+
+<body>
+  <div id="wrapper">
+    <div id="content">
+      <div id="headline">
+        <a id="main" href="/main">
+          <img id="icon" src="images/otion.png" />
+          <span id="icon_name" class="center">Otion</span>
+        </a>
+        <span class="head_content">
+          <a class="link" href="/analysis/">분석</a>
+        </span>
+        <span class="head_content">
+          <a class="link" href="/review/">복습</a>
+        </span>
+        <span class="head_content">
+          <a class="link" href="https://www.notion.so/ko-kr/product">노션이란?</a>
+        </span>
+        <span class="head_content">
+          <a class="link" href="https://osmin.notion.site/070e67e215274cdfae0eae368b60e7ca">ex</a>
+        </span>
+        <% if(req.session.user_id){ %>
+          <button id="open"> &#9776; </button>
+          <% }else{ %>
+            <button id="start"> 시작하기 </button>
+            <% } %>
+      </div>
+      <div id="sections">
+        <div id="circle">
+          <img id="main_pic1" src="images/feedback.png" alt="feedback image" />
+        </div>
+        <span>
+          당신의 Notion 페이지를 시각적 피드백을 통해 한 눈에 파악할 수
+          있습니다.
+        </span>
+      </div>
+      <div id="sections">
+        <div id="circle">
+          <img id="main_pic2" src="images/review.png" alt="review image" />
+        </div>
+        <span>
+          당신의 Notion에 담긴 정리내용들을 쉽고 간편하게 복습할 수 있습니다.
+        </span>
+      </div>
+      <div id="sections">
+        <div id="circle">
+          <img id="main_pic3" src="images/pages.png" alt="pages image" />
+        </div>
+        <span>
+          또한 당신은 동시에 여러 개의 페이지를 연결할 수 있습니다.
+        </span>
+      </div>
+    </div>
+    <!-- Sidebar -->
+    <% if(!req.session.user_id){ %>
+      <div id="sidebar">
+        <div id="OTION">OTION</div>
+        <form action="/login_check" method="POST">
+          <input type="text" name="user_email" placeholder="ID" />
+          <input type="password" name="password" placeholder="Password" />
+          <input type="submit" value="로그인" />
+        </form>
+        <span id="login_option">
+          <a class="link" href="/register">회원가입</a>
+          <!-- url로 설정해주어야 접근이 가능하다. -->
+          <a class="link" href="/find_idpw">아이디/비밀번호 찾기</a>
+        </span>
+      </div>
+      <% }else{ %>
+        <div id="sidebar">
+          <button id="close">≫</button>
+          <div id="userinfo">
+            <%= req.session.user_id %>님,<br>안녕하세요.
+          </div>
+          <button id="logout" onclick="location.href='/logout'">Logout</button>
+        </div>
+        <% } %>
+  </div>
+</body>
+
+</html>

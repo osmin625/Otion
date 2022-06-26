@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Otion</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="jquery-3.6.0.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("#open").click(function () {
+        $("#sidebar").animate({ width: "toggle" }, 100);
+        $(this).hide();
+      });
+      $("#close").click(function () {
+        $("#sidebar").animate({ width: "toggle" }, 100);
+        $("#open").show();
+      });
+    });
+  </script>
+  <style>
+    #content {
+      background-color: #fffefb;
+    }
+
+    body {
+      margin: 0px;
+    }
+
+    #wrapper {
+      display: flex;
+      align-content: space-between;
+      justify-content: space-between;
+      min-height: 100vh;
+    }
+
+    #content {
+      width: 100%;
+    }
+
+    #nav_review {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    #bodyleft {
+      width: 50%;
+    }
+
+    #page_title {
+      margin-left: 10px;
+    }
+
+    #page_content {
+      border: 2px black;
+      border-style: inset;
+      padding: 0px 30px 30px 30px;
+      border-radius: 10px;
+    }
+
+    #bodyline {
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    .result_name {
+      margin-top: 30px;
+      font-size: 25px;
+    }
+
+    .result_opt {
+      color: #bbbbbb;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .result {
+      padding: 40px;
+      border: solid 2px #bbbbbb;
+      border-radius: 20px;
+      max-width: 500px;
+      height: fit-content;
+      text-align: left;
+    }
+
+    #bodyright {
+      width: 40%;
+    }
+
+    .style_block {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .style_title {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .style {
+      color: #908e8b;
+      font-size: 25px;
+      margin-left: 10px;
+    }
+
+    .style_contents {
+      border: 2px solid #908e8b;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .count {
+      color: #bbbbbb;
+      margin-right: 5px;
+    }
+
+    .bold_text {
+      font-weight: bold;
+      color: transparent;
+      border-bottom: solid 1px black;
+    }
+
+    .bold_text:hover {
+      color: black;
+      border: none;
+      transition: all 0.5s;
+    }
+
+    .red,
+    .blue,
+    .gray,
+    .green,
+    .yellow,
+    .purple,
+    .orange,
+    .brown,
+    .pink {
+      color: transparent;
+      border-bottom: solid 1px black;
+    }
+
+    .red:hover {
+      color: red;
+      border: none;
+      transition: all 0.5s;
+    }
+
+    .gray:hover {
+      color: gray;
+      border: none;
+      transition: all 0.5s;
+    }
+
+    .blue:hover {
+      color: blue;
+      border: none;
+      transition: all 0.5s;
+    }
+
+    .green:hover {
+      color: green;
+      border: none;
+      transition: all 0.5s;
+    }
+
+    .brown:hover {
+      color: brown;
+      border: none;
+      transition: all 0.5s;
+    }
+
+    .orange:hover {
+      color: orange;
+      border: none;
+      transition: all 0.5s;
+    }
+
+    .yellow:hover {
+      color: yellow;
+      border: none;
+      transition: all 0.5s;
+    }
+
+    .purple:hover {
+      color: purple;
+      border: none;
+      transition: all 0.5s;
+    }
+
+    .pink:hover {
+      color: pink;
+      border: none;
+      transition: all 0.5s;
+    }
+
+    .italic_text {
+      font-style: italic;
+      color: transparent;
+      border-bottom: solid 1px black;
+    }
+
+    .italic_text:hover {
+      color: black;
+      border: none;
+      transition: all 0.5s;
+    }
+
+    .underline_text {
+      text-decoration: underline;
+      color: transparent;
+      border-bottom: solid 1px black;
+    }
+
+    .underline_text:hover {
+      color: black;
+      border: none;
+      transition: all 0.5s;
+    }
+
+    #no_page {
+      display: flex;
+      margin: auto;
+      font-size: 30px;
+      align-items: center;
+      color: #bbbbbb;
+      justify-content: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrapper">
+    <div id="content">
+      <%- include('./layouts/header.ejs') -%>
+        <% if(locals.page_content) { %>
+          <div id="bodyline">
+            <div id="bodyleft">
+              <div id="page_title">
+                <%= locals.page_title %>
+              </div>
+              <div id="page_content">
+                <% for(var text_obj of locals.page_content){ %>
+                  <% if(text_obj.style){ %>
+                    <span
+                      class="
+                <% if(text_obj.style.bold){ %> bold_text <% } %><% if(text_obj.style.underline){ %> underline_text <% } %><% if(text_obj.style.italic){ %> italic_text <% } %> <%= text_obj.style.color %>">
+                      <%= text_obj.text %>
+                    </span>
+                    <% if(text_obj.text==='' ) { %> <br>
+                      <% } %>
+                        <% } %>
+                          <% } %>
+
+              </div>
+            </div>
+          </div>
+          <% }else{ %>
+            <div id="no_page">페이지가 없습니다.</div>
+            <% } %>
+    </div>
+    <!-- Sidebar -->
+    <%- include('./layouts/sidebar.ejs') -%>
+  </div>
+</body>
+
+</html>

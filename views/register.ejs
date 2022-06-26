@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Otion</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="jquery-3.6.0.js"></script>
+  <% if(locals.isfail !==undefined && locals.isfail===true){ %>
+    <script>
+      alert("회원가입 실패.")
+      location.href = "/register"
+    </script>
+    <% }else if(locals.isfail !==undefined && locals.isfail===false) { %>
+      <script>
+        alert("회원가입 성공.")
+        location.href = "/main"
+      </script>
+      <% } %>
+        <style>
+          #content {
+            background-color: #fffefb;
+            display: flex;
+            flex-direction: column;
+          }
+
+          #headline {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+          }
+
+          #bodyline {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .head_content {
+            padding: 5px 15px;
+          }
+
+          .head_content:hover {
+            background-color: #f7f6f3;
+            text-decoration: underline;
+          }
+
+          body {
+            margin: 0px;
+          }
+
+          #OTION {
+            font-size: 40px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-family: "inter";
+            font-weight: lighter;
+          }
+
+          a {
+            text-decoration: none;
+            color: black;
+          }
+
+          #main {
+            display: flex;
+            padding: 10px 30px 10px 80px;
+            align-items: center;
+          }
+
+          #icon {
+            max-width: 50px;
+          }
+
+          #icon_name {
+            font-weight: bold;
+          }
+
+          .link:hover {
+            text-decoration: underline;
+          }
+
+          #wrapper {
+            display: flex;
+            align-content: space-between;
+            justify-content: space-between;
+            min-height: 100vh;
+          }
+
+          #content {
+            width: 100%;
+          }
+
+          form {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            flex-direction: column;
+          }
+
+          button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            min-width: 400px;
+            margin: 10px;
+            font-size: 18px;
+            background-color: white;
+            border: solid 1px rgb(225, 225, 225);
+            border-radius: 5px;
+          }
+
+          input[type="email"] {
+            padding: 10px 20px;
+            margin: 5px 10px 10px 10px;
+            background-color: #f7f6f3;
+            border: solid 1px rgb(225, 225, 225);
+            border-radius: 5px;
+            min-width: 355px;
+            font-size: 20px;
+          }
+
+          input[type="email"]:hover {
+            border: solid 1px rgb(201, 201, 201);
+            ;
+          }
+
+          input[type="email"]:focus {
+            outline: solid 3px #abdcef;
+            border: solid 1px #00a2e3;
+          }
+
+          input[type="email"]:active {
+            outline: none;
+            border: solid 1px #00a2e3;
+          }
+
+          #input_label {
+            color: #bbbbbb;
+            font-size: 13px;
+            margin-left: 10px;
+          }
+
+          input[type="password"] {
+            padding: 10px 20px;
+            margin: 5px 10px 10px 10px;
+            background-color: #f7f6f3;
+            border: solid 1px rgb(225, 225, 225);
+            border-radius: 5px;
+            min-width: 355px;
+            font-size: 20px;
+          }
+
+          input[type="password"]:hover {
+            border: solid 1px rgb(201, 201, 201);
+          }
+
+          input[type="password"]:focus {
+            outline: solid 3px #abdcef;
+            border: solid 1px #00a2e3;
+          }
+
+          input[type="password"]:active {
+            outline: none;
+            border: solid 1px #00a2e3;
+          }
+
+          #password {
+            display: none;
+            color: #bbbbbb;
+            font-size: 13px;
+          }
+
+          #email_password {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            min-width: 400px;
+            margin: 10px;
+            font-size: 18px;
+            border: solid 1px rgb(225, 225, 225);
+            border-radius: 5px;
+            color: #ec625b;
+            background-color: #fdf5f2;
+            border: solid 1px #ec625b;
+          }
+
+          #email_password:hover {
+            background-color: #feece5;
+          }
+
+          #email_password:active {
+            background-color: #fee3d9;
+          }
+
+          #register {
+            font-size: 65px;
+            padding: 20px;
+            font-weight: bold;
+          }
+
+          .bold {
+            font-weight: bold;
+          }
+
+          hr {
+            width: 400px;
+            color: #bbbbbb;
+          }
+
+          img {
+            width: 30px;
+            margin-right: 10px;
+          }
+        </style>
+</head>
+
+<body>
+  <div id="wrapper">
+    <div id="content">
+      <div id="headline">
+        <a id="main" href="/main">
+          <img id="icon" src="images/otion.png" />
+          <span id="icon_name" class="center">Otion</span>
+        </a>
+      </div>
+      <div id="bodyline">
+        <div id="register">회원가입</div>
+        <button id="google">
+          <img src="images/google.png"></img><span class="bold">Google</span>로 계속하기
+        </button>
+        <hr id="line" />
+        <form action="/register/add" method="post" id="login_form">
+          <div id="input_label">이메일</div>
+          <input type="email" name="email" placeholder="이메일 주소를 입력하세요" required />
+          <div id="input_label">비밀번호</div>
+          <input type="password" name="password" placeholder="비밀번호를 입력하세요" required />
+          <input type="submit" id="email_password" value="가입하기" />
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

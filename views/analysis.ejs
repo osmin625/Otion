@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Otion</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="/jquery-3.6.0.js"></script>
+
+  <style>
+    #content {
+      background-color: #fffefb;
+      width: 100%;
+    }
+
+    body {
+      margin: 0px;
+    }
+
+    #wrapper {
+      display: flex;
+      align-content: space-between;
+      justify-content: space-between;
+      min-height: 100vh;
+    }
+
+    #nav_analysis {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    #bodyleft {
+      width: 50%;
+    }
+
+    #page_title {
+      margin-left: 10px;
+    }
+
+    #page_content {
+      border: 2px black;
+      border-style: inset;
+      padding: 0px 30px 30px 30px;
+      border-radius: 10px;
+    }
+
+    #bodyline {
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    .result_name {
+      margin-top: 30px;
+      font-size: 25px;
+    }
+
+    .result_opt {
+      color: #bbbbbb;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .result {
+      padding: 40px;
+      border: solid 2px #bbbbbb;
+      border-radius: 20px;
+      max-width: 500px;
+      height: fit-content;
+      text-align: left;
+    }
+
+    #bodyright {
+      width: 40%;
+    }
+
+    .style_block {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .style_title {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .style {
+      color: #908e8b;
+      font-size: 25px;
+      margin-left: 10px;
+    }
+
+    .style_contents {
+      border: 2px solid #908e8b;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .count {
+      color: #bbbbbb;
+      margin-right: 5px;
+    }
+
+    .bold_text {
+      font-weight: bold;
+    }
+
+    .red {
+      color: red;
+    }
+
+    .gray {
+      color: gray;
+    }
+
+    .blue {
+      color: blue;
+    }
+
+    .green {
+      color: green;
+    }
+
+    .brown {
+      color: brown;
+    }
+
+    .orange {
+      color: orange;
+    }
+
+    .yellow {
+      color: yellow;
+    }
+
+    .purple {
+      color: purple;
+    }
+
+    .pink {
+      color: pink;
+    }
+
+    .italic_text {
+      font-style: italic;
+    }
+
+    .underline_text {
+      text-decoration: underline;
+    }
+    #no_page{
+      display:flex;
+      margin: auto;
+      font-size:30px;
+      align-items: center;
+      color:#bbbbbb;
+      justify-content: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrapper">
+    <div id="content">
+      <%- include('./layouts/header.ejs') -%>
+      <% var bold_count=0
+                var color_count=0 
+                var underline_count=0
+                var italic_count=0 %>
+              <% if(locals.page_content) { %>
+        <div id="bodyline">
+          <div id="bodyleft">
+            <div id="page_title">
+              <%= locals.page_title %>
+            </div>
+            <div id="page_content">
+              
+                  <% for(var text_obj of locals.page_content){ %>
+                      <% if(text_obj.style){ %>
+                        <% if(text_obj.style.color !=='default' ){ color_count +=1; }%>
+                            <span id=text class="
+                <% if(text_obj.style.bold){ bold_count +=1; %> bold_text <% } %><% if(text_obj.style.underline){ underline_count +=1; %> underline_text <% } %><% if(text_obj.style.italic){ italic_count +=1; %> italic_text <% } %> <%= text_obj.style.color %>
+                ">
+                            <%= text_obj.text %>
+                            </span>
+                              <% if(text_obj.text==='' ) { %> <br> <% } %>
+                      <% } %>
+                  <% } %>
+              
+            </div>
+          </div>
+          <div id="bodyright">
+            <div class="style_block">
+              <div class="style_title">
+                <span class="style">bold</span>
+                <span class="count">
+                  count : <%= bold_count %>
+                </span>
+              </div>
+              <div id="bold_contents" class="style_contents">
+              </div>
+            </div>
+            <div class="style_block">
+              <div class="style_title">
+                <span class="style">color</span>
+                <span class="count">
+                  count : <%= color_count %>
+                </span>
+              </div>
+              <div id="color_contents" class="style_contents">
+              </div>
+            </div>
+            <div class="style_block">
+              <div class="style_title">
+                <span class="style">underline</span>
+                <span class="count">
+                  count : <%= underline_count %>
+                </span>
+              </div>
+              <div id="underline_contents" class="style_contents">
+              </div>
+            </div>
+            <div class="style_block">
+              <div class="style_title">
+                <span class="style">italic</span>
+                <span class="count">
+                  count : <%= italic_count %>
+                </span>
+              </div>
+              <div id="italic_contents" class="style_contents">
+              </div>
+            </div>
+          </div>
+        </div>
+        <% }else{ %>
+          <div id="no_page">페이지가 없습니다.</div>
+          <% } %>
+    </div>
+    <!-- Sidebar -->
+    <%- include('./layouts/sidebar.ejs') -%>
+  </div>
+  <script>
+    var text_elements = document.querySelectorAll('.bold_text')
+    for (var element of text_elements) {
+      console.log(element.innerText)
+      document.getElementById('bold_contents').innerText += element.innerText + '\n'
+    }
+    var text_elements = document.querySelectorAll('.underline_text')
+    for (var element of text_elements) {
+      console.log(element.innerText)
+      document.getElementById('underline_contents').innerText += element.innerText + '\n'
+    }
+    var text_elements = document.querySelectorAll('.italic_text')
+    for (var element of text_elements) {
+      console.log(element.innerText)
+      document.getElementById('italic_contents').innerText += element.innerText + '\n'
+    }
+    var text_elements = document.querySelectorAll('.red,.blue,.orange,.yellow,.purple,.green,.gray,.pink,.brown')
+    for (var element of text_elements) {
+      console.log(element.innerText)
+      document.getElementById('color_contents').innerText += element.innerText + '\n'
+    }
+  </script>
+</body>
+
+</html>

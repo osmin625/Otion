@@ -1,0 +1,63 @@
+<style>
+  #headline {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .head_content {
+      padding: 5px 15px;
+    }
+
+    .head_content:hover {
+      background-color: #f7f6f3;
+      text-decoration: underline;
+    }
+
+    .head_content:active {
+      background-color: #f0ece3;
+      text-decoration: underline;
+    }
+    #OTION {
+      font-size: 40px;
+      margin-bottom: 30px;
+      text-align: center;
+      font-family: "inter";
+      font-weight: lighter;
+    }
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    #main {
+      display: flex;
+      padding: 10px 30px 10px 80px;
+      align-items: center;
+    }
+
+    #icon {
+      max-width: 50px;
+    }
+
+    #icon_name {
+      font-weight: bold;
+    }
+    
+    .link:hover {
+      text-decoration: underline;
+    }
+</style>
+<div id="headline">
+  <a id="main" href="/main">
+    <img id="icon" src="/images/otion.png" />
+    <span id="icon_name" class="center">Otion</span>
+  </a>
+  <span id="nav_analysis" class="head_content">
+    <a class="link" href="/analysis/">분석</a>
+  </span>
+  <span id="nav_review" class="head_content">
+    <a class="link" href="/review/">복습</a>
+  </span>
+  <button id="open">&#9776;</button>
+</div>
